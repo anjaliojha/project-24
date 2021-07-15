@@ -7,12 +7,14 @@ var engine, world;
 var canvas;
 var player, playerBase;
 var computer, computerBase;
+var angle;
 
 var arrow;
 
 
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
+  angle=-PI/2;
 
   engine = Engine.create();
   world = engine.world;
@@ -21,7 +23,7 @@ function setup() {
   player = new Player(285, playerBase.body.position.y - 153, 50, 180);
  
   //Create Player Archer Object
-   playerArcher=new PlayerArcher(340, playerBase.body.position.y-180, 120,120 )
+   playerArcher=new PlayerArcher(340, playerBase.body.position.y-180, 120,120 ,angle);
   computerBase = new ComputerBase(
     width - 300,
     random(450, height - 300),
@@ -71,15 +73,21 @@ function draw() {
 
   //Display arrow();
   arrow.display()
-  //if Space (32) key is pressed call shoot function of playerArrow
+
+  
+}
+
+function keyPressed(){
+
+//if Space (32) key is pressed call shoot function of playerArrow
   if(keyCode === 32){
-    arrow.shoot(playerArcher.body.angle)
+    arrow.shoot(playerArcher.body.angle);
     
     //Call shoot() function and pass angle of playerArcher
 
 
   }
+  
 }
-
 
 

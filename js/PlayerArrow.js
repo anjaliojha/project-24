@@ -1,5 +1,5 @@
 class PlayerArrow {
-    constructor(x, y, width, height, archerAngle) {
+    constructor(x, y, width, height) {
       var options = {
         restitution: 0.8,
         friction: 1.0,
@@ -14,8 +14,11 @@ class PlayerArrow {
     }
     
   shoot(archerAngle) {
+    
+    console.log(archerAngle);
     var velocity = p5.Vector.fromAngle(archerAngle);
-    velocity.mult(20);
+    console.log(velocity);
+    velocity.mult(50);
     Matter.Body.setStatic(this.body, false);
     Matter.Body.setVelocity(this.body, { x: velocity.x, y: velocity.y });
   }
